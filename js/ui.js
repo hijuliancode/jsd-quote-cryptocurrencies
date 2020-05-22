@@ -34,9 +34,15 @@ class Interfaz {
   }
   // Imprime el resultado de la cotización
   mostrarResultado(resultado, moneda, crypto) {
-    const datosMoneda = resultado[crypto][moneda]
-    const { FROMSYMBOL, TOSYMBOL, PRICE, CHANGEPCTDAY, LASTUPDATE } = datosMoneda
-    let actualizado = new Date(LASTUPDATE * 1000)
+
+    // Si existe resultado anterior ocultarlo
+    const resultadoAnterior = document.querySelector('#resultado > div');
+    if(resultadoAnterior) {
+      resultadoAnterior.remove()
+    }
+    const datosMoneda = resultado[crypto][moneda];
+    const { FROMSYMBOL, TOSYMBOL, PRICE, CHANGEPCTDAY, LASTUPDATE } = datosMoneda;
+    let actualizado = new Date(LASTUPDATE * 1000);
     // Convertir fecha a fecha local
     actualizado = actualizado.toLocaleDateString('es-CO')
     console.log(datosMoneda)
@@ -54,8 +60,20 @@ class Interfaz {
           <p>Última actualicación: ${actualizado}</p>
         </div>
       </div>
-    `
-    // Insertar Resultado
-    document.getElementById('resultado').innerHTML = template
+    `;
+
+    this.toggleSpinner('block')
+
+    setTimeout(() => {
+      this.toggleSpinner('none')
+      // Insertar Resultado
+      document.getElementById('resultado').innerHTML = template
+    }, 3000);
+  }
+
+  // mostrar u ocultar spinner de carga al enviar la cotización
+  toggleSpinner(vista) {
+    const spinner = document.querySelector('.contenido-spinner')
+    spinner.style.display = vista
   }
 }
