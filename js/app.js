@@ -1,3 +1,4 @@
+const api = new API()
 const ui = new Interfaz()
 
 // Fomulario
@@ -16,7 +17,6 @@ formulario.addEventListener('submit', e => {
     // alerta de error
     ui.mostrarMensaje('Ambos campos son obligatorios', 'alert bg-danger text-center')
   } else {
-    
     // todo bien, consultar la api
   }
 })

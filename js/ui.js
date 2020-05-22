@@ -1,4 +1,13 @@
 class Interfaz {
+  constructor() {
+    this.init()
+  }
+  init() {
+    api.obtenerMonedasAPI()
+      .then(res => {
+        console.log(res.Data)
+      })
+  }
   mostrarMensaje(mensaje, clases) {
     const div = document.createElement('div')
     div.className = clases
