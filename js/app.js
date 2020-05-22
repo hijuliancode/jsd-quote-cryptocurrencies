@@ -1,3 +1,5 @@
+const ui = new Interfaz()
+
 // Fomulario
 const formulario = document.getElementById('formulario')
 const moneda = document.getElementById('moneda')
@@ -12,7 +14,9 @@ formulario.addEventListener('submit', e => {
   // Comprobar que monedas hayan sido seleccionadas
   if ( !monedaSeleccionada || !criptoMonedaSeleccionada ) {
     // alerta de error
+    ui.mostrarMensaje('Ambos campos son obligatorios', 'alert bg-danger text-center')
   } else {
+    
     // todo bien, consultar la api
   }
 })
