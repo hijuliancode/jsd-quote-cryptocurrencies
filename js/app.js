@@ -18,8 +18,8 @@ formulario.addEventListener('submit', e => {
     ui.mostrarMensaje('Ambos campos son obligatorios', 'alert bg-danger text-center')
   } else {
     api.obtenerValores(monedaSeleccionada, criptoMonedaSeleccionada)
-      .then(resultado => {
-        console.log(resultado)
+      .then(data => {
+        ui.mostrarResultado(data.RAW, monedaSeleccionada, criptoMonedaSeleccionada)
       })
   }
 })

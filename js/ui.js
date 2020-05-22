@@ -32,4 +32,10 @@ class Interfaz {
       mensajes.querySelector('div').remove()
     }, 3000);
   }
+  // Imprime el resultado de la cotización
+  mostrarResultado(resultado, moneda, crypto) {
+    console.log('resultado', resultado[crypto][moneda])
+    console.log('moneda', moneda)
+    console.log('crypto', crypto)
+  }
 }
