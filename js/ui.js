@@ -5,8 +5,16 @@ class Interfaz {
   init() {
     api.obtenerMonedasAPI()
       .then(monedas => {
+        // crear un select de opciones
+        const selectCriptomoneda = document.getElementById('criptomoneda')
+        // iterar por los resultados de la api
         for (const [key, value] of Object.entries(monedas.Data)) {
-          console.log('Key => ', key)
+          // añadir el Symbol y el nombre como opciones
+          const option = document.createElement('option')
+          option.value = value.Symbol
+          option.appendChild(document.createTextNode(value.CoinName))
+          // Insertar la nueva opción en el select
+          selectCriptomoneda.appendChild(option)
         }
       })
   }
