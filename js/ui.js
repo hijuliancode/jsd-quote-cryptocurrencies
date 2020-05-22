@@ -35,16 +35,23 @@ class Interfaz {
   // Imprime el resultado de la cotización
   mostrarResultado(resultado, moneda, crypto) {
     const datosMoneda = resultado[crypto][moneda]
-    const { FROMSYMBOL, TOSYMBOL, PRICE } = datosMoneda
+    const { FROMSYMBOL, TOSYMBOL, PRICE, CHANGEPCTDAY, LASTUPDATE } = datosMoneda
+    let actualizado = new Date(LASTUPDATE * 1000)
+    // Convertir fecha a fecha local
+    actualizado = actualizado.toLocaleDateString('es-CO')
+    console.log(datosMoneda)
     console.log('moneda', moneda)
     console.log('crypto', crypto)
+    console.log('actualizado', actualizado)
 
     // Construir el template
     let template = `
       <div class="card bg-warning">
         <div class="card-body text-light">
           <h2 class="card-title">Resultado:</h2>
-          <p>El precio de ${FROMSYMBOL} a moneda ${TOSYMBOL} es de $ ${PRICE.toFixed(2)}</p>
+          <p>El precio de ${FROMSYMBOL} a moneda ${TOSYMBOL} es de: $ ${PRICE.toFixed(2)}</p>
+          <p>Variación último día: % ${CHANGEPCTDAY.toFixed(3)}</p>
+          <p>Última actualicación: ${actualizado}</p>
         </div>
       </div>
     `
