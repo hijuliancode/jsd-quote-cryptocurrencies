@@ -1,4 +1,4 @@
-const api = new API()
+const api = new API('dac5a3161605252d9ce45adae9ffe9bb062389b1669df314fac46ae067825851')
 const ui = new Interfaz()
 
 // Fomulario
@@ -17,6 +17,9 @@ formulario.addEventListener('submit', e => {
     // alerta de error
     ui.mostrarMensaje('Ambos campos son obligatorios', 'alert bg-danger text-center')
   } else {
-    // todo bien, consultar la api
+    api.obtenerValores(monedaSeleccionada, criptoMonedaSeleccionada)
+      .then(resultado => {
+        console.log(resultado)
+      })
   }
 })
