@@ -4,8 +4,10 @@ class Interfaz {
   }
   init() {
     api.obtenerMonedasAPI()
-      .then(res => {
-        console.log(res.Data)
+      .then(monedas => {
+        for (const [key, value] of Object.entries(monedas.Data)) {
+          console.log('Key => ', key)
+        }
       })
   }
   mostrarMensaje(mensaje, clases) {
